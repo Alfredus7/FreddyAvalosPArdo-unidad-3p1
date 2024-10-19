@@ -1,0 +1,102 @@
+body, html {
+    background-image: url('https://images.alphacoders.com/864/thumb-1920-864993.jpg');
+    background-attachment: fixed;
+    background-position: bottom;
+    background-size: cover;
+    color: aliceblue;
+    font-family: 'Source Sans Pro', sans-serif;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+a {
+    color: aliceblue;
+}
+
+span {
+    color: darkred;
+}
+
+footer {
+    background-color: firebrick;
+    opacity: 0.9;
+}
+header{
+    background-color: maroon;
+    opacity: 0.9;
+}
+
+.sidebar {
+    background-color: crimson;
+    opacity: 0.8;
+}
+
+main {
+    background-color: palevioletred;
+    opacity: 0.7;
+}
+
+form {
+    background-color: firebrick;
+    padding: 2%;
+    border-radius: 8px;
+    color: aliceblue
+}
+hr{
+    background-color: aquamarine;
+    visibility:hidden;
+    
+}
+.form-control {
+    background-color: crimson;
+    border: 2px solid firebrick;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+    .form-control:hover {
+        background-color: darkred;
+        cursor: pointer;
+    }
+
+    .form-control:focus {
+        background-color: firebrick;
+        outline: none;
+        border: 2px solid darkred;
+    }
+
+.btn, btn-primary {
+    background-color: crimson;
+    border: 2px solid palevioletred;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 2%;
+}
+
+    .btn:hover {
+        background-color: darkred;
+        cursor: pointer;
+    }
+
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Para evitar bordes dobles */
+    background-color: #ffcccc; /* Fondo claro rojizo para la tabla */
+}
+
+thead tr {
+    border: 1px solid #ff6666; /* Borde rojo suave alrededor de las celdas */
+    padding: 8px;
+    text-align: left;
+    background-color: #cc3333; /* Fondo rojo más oscuro para los encabezados */
+    color: white; /* Color blanco para el texto en los encabezados */
+}
+
+tbody tr {
+    background-color: #ff9999; /* Fondo rojizo claro para las filas pares */
+}
+
+    tbody tr:hover {
+        background-color: #ff6666; /* Cambio de color al pasar el cursor por encima */
+    }
