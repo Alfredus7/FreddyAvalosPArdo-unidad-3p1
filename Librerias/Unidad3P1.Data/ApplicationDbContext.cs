@@ -35,7 +35,7 @@ namespace Unidad3P1.Data
             //seed admin
             string ADMIN_ID = "5d4725d6-6dc4-4d3f-ab81-dda36159300e";
             string ROLE_ID = "341743f0-asd2–42de-afbf-59kmkkmk72cf6";
-
+            string ROLE_ID_VENTAS = "265e39fd-0ed7-4434-9e01-f669da0925de";
             //seed admin role
             builder.Entity<IdentityRole>().HasData(new IdentityRole
             {
@@ -43,6 +43,14 @@ namespace Unidad3P1.Data
                 NormalizedName = "ADMIN",
                 Id = ROLE_ID,
                 ConcurrencyStamp = ROLE_ID
+            });
+
+            builder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Name = "Ventas",
+                NormalizedName = "VENTAS",
+                Id = ROLE_ID_VENTAS,
+                ConcurrencyStamp = ROLE_ID_VENTAS
             });
 
             //create user

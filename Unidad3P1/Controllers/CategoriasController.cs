@@ -14,7 +14,7 @@ using Unidad3P1.ViewModels;
 
 namespace Unidad3P1.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class CategoriasController : Controller
     {
         private readonly ApplicationDbContext _context;

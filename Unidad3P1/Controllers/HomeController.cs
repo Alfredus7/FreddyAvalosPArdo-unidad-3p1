@@ -15,6 +15,7 @@ namespace Unidad3P1.Controllers
 
         public IActionResult Index()
         {
+
             return View();
         }
 
@@ -28,5 +29,7 @@ namespace Unidad3P1.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
     }
 }

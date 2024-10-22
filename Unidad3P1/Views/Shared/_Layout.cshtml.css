@@ -1,49 +1,89 @@
-﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. 
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
+﻿
 a {
-  color: #0077cc;
+    color: aliceblue;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+span {
+    color: darkred;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+footer {
+    background-color: firebrick;
+    opacity: 0.9;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+header {
+    background-color: maroon;
+    opacity: 0.9;
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.sidebar {
+    background-color: crimson;
+    opacity: 0.8;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+main {
+    background-color: palevioletred;
+    opacity: 0.7;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+form {
+    background-color: firebrick;
+    padding: 2%;
+    border-radius: 8px;
+    color: aliceblue
 }
-*/
+
+.form-control {
+    background-color: crimson;
+    border: 2px solid firebrick;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+    .form-control:hover {
+        background-color: darkred;
+        cursor: pointer;
+    }
+
+    .form-control:focus {
+        background-color: firebrick;
+        outline: none;
+        border: 2px solid darkred;
+    }
+
+.btn, btn-primary {
+    background-color: crimson;
+    border: 2px solid palevioletred;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 2%;
+}
+
+    .btn:hover {
+        background-color: darkred;
+        cursor: pointer;
+    }
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffcccc;
+}
+
+thead tr {
+    border: 1px solid #ff6666;
+    padding: 8px;
+    text-align: left;
+    background-color: #cc3333; 
+    color: white; 
+}
+
+    tbody tr {
+        background-color: #ff9999; 
+    }
+
+    tbody tr:hover {
+        background-color: #ff6666;
+    }

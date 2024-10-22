@@ -1,48 +1,87 @@
-﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-/*a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿a {
+    color: aliceblue;
 }
 
-a {
-  color: #0077cc;
+span {
+    color: darkred;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+footer {
+    background-color: orange;
+    opacity: 0.9;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+header {
+    background-color: orange;
+    opacity: 0.9;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+.sidebar {
+    background-color: darkorange;
+    opacity: 0.8;
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+main {
+    background-color: palegoldenrod;
+    opacity: 0.7;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+form {
+    background-color: firebrick;
+    padding: 2%;
+    border-radius: 8px;
+    color: aliceblue;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
-}*/
+.form-control {
+    background-color: #FFD700; /* Dorado */
+    border: 2px solid firebrick;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+    .form-control:hover {
+        background-color: #FFA500; /* Naranja */
+        cursor: pointer;
+    }
+
+    .form-control:focus {
+        background-color: #FFD700; /* Dorado */
+        outline: none;
+        border: 2px solid #FF8C00; /* Naranja oscuro */
+    }
+
+.btn, .btn-primary {
+    background-color: #FFD700; /* Dorado */
+    border: 2px solid #FFA500; /* Naranja */
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 2%;
+}
+
+    .btn:hover {
+        background-color: #FF8C00; /* Naranja oscuro */
+        cursor: pointer;
+    }
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Para evitar bordes dobles */
+    background-color: #FFF5CC; /* Fondo amarillento claro para la tabla */
+}
+
+thead tr {
+    border: 1px solid #FFD700; /* Borde dorado suave alrededor de las celdas */
+    padding: 8px;
+    text-align: left;
+    background-color: #FFA500; /* Fondo naranja más oscuro para los encabezados */
+    color: white; /* Color blanco para el texto en los encabezados */
+}
+
+tbody tr {
+    background-color: #FFE680; /* Fondo amarillento claro para las filas pares */
+}
+
+    tbody tr:hover {
+        background-color: #FFD700; /* Cambio de color a dorado al pasar el cursor por encima */
+    }
