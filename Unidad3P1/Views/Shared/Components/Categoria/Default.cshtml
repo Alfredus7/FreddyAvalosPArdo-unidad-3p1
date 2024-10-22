@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Unidad3P1.ViewModels.CategoryViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoriaNombre)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td >
+                    <a asp-action="Edit" class="text-black" asp-route-id="@item.CategoriaId"> @Html.DisplayFor(modelItem => item.CategoriaNombre)</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

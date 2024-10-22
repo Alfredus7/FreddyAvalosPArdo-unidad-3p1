@@ -74,10 +74,29 @@
 
             <!-- Main Content -->
             <main role="main" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="container-fluid mt-3">
-                    @RenderBody()
-                </div>
+
+
+
+                @if (User != null && User.Identity != null && User.Identity.IsAuthenticated)
+                {
+                    <div class="row">
+                        <div class="col-md-2">
+                            @await Component.InvokeAsync("Categoria")
+                        </div>
+                        <div role="main" class="col-md-9 mt-3">
+                            @RenderBody()
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div role="main"  class="col-md-9 mt-3">
+                        @RenderBody()
+                    </div>
+                }
+
             </main>
+
         </div>
     </div>
 

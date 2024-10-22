@@ -13,7 +13,7 @@ using Unidad3P1.ViewModels;
 
 namespace Unidad3P1.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    //[Authorize(Roles ="Admin")]
     public class ProductosController : Controller
     {
         private readonly ApplicationDbContext _context;
