@@ -12,8 +12,8 @@ using Unidad3P1.Data;
 namespace Unidad3P1.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241018220604_RestCatProd")]
-    partial class RestCatProd
+    [Migration("20241025222832_data3")]
+    partial class data3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -155,14 +155,14 @@ namespace Unidad3P1.Data.Migrations
                         {
                             Id = "5d4725d6-6dc4-4d3f-ab81-dda36159300e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4490afde-5587-46ba-b2d4-5672c9bc22b3",
+                            ConcurrencyStamp = "29b6fac0-f81f-45fa-9730-93bdf7fe35d7",
                             Email = "admin@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@EMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMwNVeZHKWsCswDLasaXpBFpAp8FAto9g4I4CHEqipGUR/ApCjNy2NwC7IPvsa3JMw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFIZWshfCT53l2tMX3PzgEMJIwYGqsWmkUhIsHzu063WcvHBrjFV0ddZPu8R5koqzA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "68cbb7b7-64d0-4da1-98ac-8858c3ab71a9",
+                            SecurityStamp = "cc1ac656-bd9e-49f4-9b0e-9dcdfce1e3ed",
                             TwoFactorEnabled = false,
                             UserName = "admin@email.com"
                         });
@@ -260,7 +260,7 @@ namespace Unidad3P1.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Unidad3P1.Data.Entidades.CarritoCompra", b =>
+            modelBuilder.Entity("Unidad3P1.Data.Entidades.CarritoCompraEntity", b =>
                 {
                     b.Property<int>("CarritoCompraId")
                         .ValueGeneratedOnAdd()
@@ -268,17 +268,17 @@ namespace Unidad3P1.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CarritoCompraId"));
 
-                    b.Property<int?>("ProductoId")
+                    b.Property<int?>("ProductoEntityProductoId")
                         .HasColumnType("int");
 
                     b.HasKey("CarritoCompraId");
 
-                    b.HasIndex("ProductoId");
+                    b.HasIndex("ProductoEntityProductoId");
 
                     b.ToTable("CarritoCompra");
                 });
 
-            modelBuilder.Entity("Unidad3P1.Data.Entidades.CarritoCompraItem", b =>
+            modelBuilder.Entity("Unidad3P1.Data.Entidades.CarritoCompraItemEntity", b =>
                 {
                     b.Property<int>("CarritoCompraItemId")
                         .ValueGeneratedOnAdd()
@@ -304,7 +304,7 @@ namespace Unidad3P1.Data.Migrations
                     b.ToTable("CarritoCompraItem");
                 });
 
-            modelBuilder.Entity("Unidad3P1.Data.Entidades.Categoria", b =>
+            modelBuilder.Entity("Unidad3P1.Data.Entidades.CategoriaEntity", b =>
                 {
                     b.Property<int>("CategoriaId")
                         .ValueGeneratedOnAdd()
@@ -325,7 +325,36 @@ namespace Unidad3P1.Data.Migrations
                     b.ToTable("Categoria", (string)null);
                 });
 
-            modelBuilder.Entity("Unidad3P1.Data.Entidades.Orden", b =>
+            modelBuilder.Entity("Unidad3P1.Data.Entidades.OrdenDetalleEntity", b =>
+                {
+                    b.Property<int>("OrdenDetalleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrdenDetalleId"));
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrdenId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrdenDetalleId");
+
+                    b.HasIndex("OrdenId");
+
+                    b.HasIndex("ProductoId");
+
+                    b.ToTable("OrdenDetalle");
+                });
+
+            modelBuilder.Entity("Unidad3P1.Data.Entidades.OrdenEntity", b =>
                 {
                     b.Property<int>("OrdenId")
                         .ValueGeneratedOnAdd()
@@ -373,36 +402,7 @@ namespace Unidad3P1.Data.Migrations
                     b.ToTable("Orden", (string)null);
                 });
 
-            modelBuilder.Entity("Unidad3P1.Data.Entidades.OrdenDetalle", b =>
-                {
-                    b.Property<int>("OrdenDetalleId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrdenDetalleId"));
-
-                    b.Property<int>("Cantidad")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrdenId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Precio")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("ProductoId")
-                        .HasColumnType("int");
-
-                    b.HasKey("OrdenDetalleId");
-
-                    b.HasIndex("OrdenId");
-
-                    b.HasIndex("ProductoId");
-
-                    b.ToTable("OrdenDetalle");
-                });
-
-            modelBuilder.Entity("Unidad3P1.Data.Entidades.Producto", b =>
+            modelBuilder.Entity("Unidad3P1.Data.Entidades.ProductoEntity", b =>
                 {
                     b.Property<int>("ProductoId")
                         .ValueGeneratedOnAdd()
@@ -495,22 +495,22 @@ namespace Unidad3P1.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Unidad3P1.Data.Entidades.CarritoCompra", b =>
+            modelBuilder.Entity("Unidad3P1.Data.Entidades.CarritoCompraEntity", b =>
                 {
-                    b.HasOne("Unidad3P1.Data.Entidades.Producto", null)
+                    b.HasOne("Unidad3P1.Data.Entidades.ProductoEntity", null)
                         .WithMany("CarritoItems")
-                        .HasForeignKey("ProductoId");
+                        .HasForeignKey("ProductoEntityProductoId");
                 });
 
-            modelBuilder.Entity("Unidad3P1.Data.Entidades.CarritoCompraItem", b =>
+            modelBuilder.Entity("Unidad3P1.Data.Entidades.CarritoCompraItemEntity", b =>
                 {
-                    b.HasOne("Unidad3P1.Data.Entidades.CarritoCompra", "Carrito")
+                    b.HasOne("Unidad3P1.Data.Entidades.CarritoCompraEntity", "Carrito")
                         .WithMany("CarritoItems")
                         .HasForeignKey("CarritoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Unidad3P1.Data.Entidades.Producto", "Producto")
+                    b.HasOne("Unidad3P1.Data.Entidades.ProductoEntity", "Producto")
                         .WithMany()
                         .HasForeignKey("ProductoId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -521,15 +521,15 @@ namespace Unidad3P1.Data.Migrations
                     b.Navigation("Producto");
                 });
 
-            modelBuilder.Entity("Unidad3P1.Data.Entidades.OrdenDetalle", b =>
+            modelBuilder.Entity("Unidad3P1.Data.Entidades.OrdenDetalleEntity", b =>
                 {
-                    b.HasOne("Unidad3P1.Data.Entidades.Orden", "Orden")
+                    b.HasOne("Unidad3P1.Data.Entidades.OrdenEntity", "Orden")
                         .WithMany("Detalles")
                         .HasForeignKey("OrdenId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Unidad3P1.Data.Entidades.Producto", "Producto")
+                    b.HasOne("Unidad3P1.Data.Entidades.ProductoEntity", "Producto")
                         .WithMany("Detalles")
                         .HasForeignKey("ProductoId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -540,9 +540,9 @@ namespace Unidad3P1.Data.Migrations
                     b.Navigation("Producto");
                 });
 
-            modelBuilder.Entity("Unidad3P1.Data.Entidades.Producto", b =>
+            modelBuilder.Entity("Unidad3P1.Data.Entidades.ProductoEntity", b =>
                 {
-                    b.HasOne("Unidad3P1.Data.Entidades.Categoria", "Categoria")
+                    b.HasOne("Unidad3P1.Data.Entidades.CategoriaEntity", "Categoria")
                         .WithMany("Items")
                         .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -551,22 +551,22 @@ namespace Unidad3P1.Data.Migrations
                     b.Navigation("Categoria");
                 });
 
-            modelBuilder.Entity("Unidad3P1.Data.Entidades.CarritoCompra", b =>
+            modelBuilder.Entity("Unidad3P1.Data.Entidades.CarritoCompraEntity", b =>
                 {
                     b.Navigation("CarritoItems");
                 });
 
-            modelBuilder.Entity("Unidad3P1.Data.Entidades.Categoria", b =>
+            modelBuilder.Entity("Unidad3P1.Data.Entidades.CategoriaEntity", b =>
                 {
                     b.Navigation("Items");
                 });
 
-            modelBuilder.Entity("Unidad3P1.Data.Entidades.Orden", b =>
+            modelBuilder.Entity("Unidad3P1.Data.Entidades.OrdenEntity", b =>
                 {
                     b.Navigation("Detalles");
                 });
 
-            modelBuilder.Entity("Unidad3P1.Data.Entidades.Producto", b =>
+            modelBuilder.Entity("Unidad3P1.Data.Entidades.ProductoEntity", b =>
                 {
                     b.Navigation("CarritoItems");
 

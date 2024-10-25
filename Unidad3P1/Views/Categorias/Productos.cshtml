@@ -1,0 +1,10 @@
+﻿@model int?
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Productos</h1>
+
+@await Component.InvokeAsync("Productos", new { ID = Model })

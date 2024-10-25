@@ -55,13 +55,6 @@ namespace Unidad3P1.Data.Migrations
                             ConcurrencyStamp = "341743f0-asd2–42de-afbf-59kmkkmk72cf6",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "265e39fd-0ed7-4434-9e01-f669da0925de",
-                            ConcurrencyStamp = "265e39fd-0ed7-4434-9e01-f669da0925de",
-                            Name = "Ventas",
-                            NormalizedName = "Ventas"
                         });
                 });
 
@@ -159,14 +152,14 @@ namespace Unidad3P1.Data.Migrations
                         {
                             Id = "5d4725d6-6dc4-4d3f-ab81-dda36159300e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e1cf5be7-1298-4c1e-8499-7ee8f61959ae",
+                            ConcurrencyStamp = "29b6fac0-f81f-45fa-9730-93bdf7fe35d7",
                             Email = "admin@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@EMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGJ6iCCyOGACOr8MpIf6svry5bO4mq03IFeYfxba3rlFQXu9FvO0Njcle0JOywyQuA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFIZWshfCT53l2tMX3PzgEMJIwYGqsWmkUhIsHzu063WcvHBrjFV0ddZPu8R5koqzA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "23035c48-8b7c-4df2-a675-7712e5d69d39",
+                            SecurityStamp = "cc1ac656-bd9e-49f4-9b0e-9dcdfce1e3ed",
                             TwoFactorEnabled = false,
                             UserName = "admin@email.com"
                         });

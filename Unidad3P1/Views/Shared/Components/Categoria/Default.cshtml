@@ -1,27 +1,17 @@
 ﻿@model IEnumerable<Unidad3P1.ViewModels.CategoryViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Categoria de productos";
 }
 
-<h1>Index</h1>
+<h2>Categoria de productos :</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoriaNombre)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td >
-                    <a asp-action="Edit" class="text-black" asp-route-id="@item.CategoriaId"> @Html.DisplayFor(modelItem => item.CategoriaNombre)</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+ <ul class="nav flex-column p-3">
+                        @foreach (var item in Model)
+                        {
+                                 <li class="nav-item">
+                                      <a asp-action="Edit" class="text-black" asp-route-id="@item.CategoriaId"> @Html.DisplayFor(modelItem => item.CategoriaNombre)</a>
+                                 </li>
+                        }  
+</ul>
+         
