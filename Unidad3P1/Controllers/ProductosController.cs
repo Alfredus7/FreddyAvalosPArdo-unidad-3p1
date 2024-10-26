@@ -69,7 +69,7 @@ namespace Unidad3P1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductoId,Nombre,DescripcionCorta,DescripcionLarga,Precio,ImagenUrl,ImageThumbnailUrl,isItemOfTheWeek,InStock,CategoriaId")] ProductoViewModel producto)
+        public async Task<IActionResult> Create([Bind("ProductoId,Nombre,DescripcionCorta,DescripcionLarga,Precio,ImagenUrl,InStock,CategoriaId")] ProductoViewModel producto)
         {
             if (ModelState.IsValid)
             {
@@ -108,7 +108,7 @@ namespace Unidad3P1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductoId,Nombre,DescripcionCorta,DescripcionLarga,Precio,ImagenUrl,ImageThumbnailUrl,isItemOfTheWeek,InStock,CategoriaId")] ProductoViewModel producto)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductoId,Nombre,DescripcionCorta,DescripcionLarga,Precio,ImagenUrl,InStock,CategoriaId")] ProductoViewModel producto)
         {
             if (id != producto.ProductoId)
             {

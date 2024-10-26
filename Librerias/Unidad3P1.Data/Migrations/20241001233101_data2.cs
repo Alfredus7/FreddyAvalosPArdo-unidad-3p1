@@ -35,8 +35,6 @@ namespace Unidad3P1.Data.Migrations
                     DescripcionLarga = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Precio = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImagenUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImageThumbnailUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    isItemOfTheWeek = table.Column<bool>(type: "bit", nullable: false),
                     InStock = table.Column<bool>(type: "bit", nullable: false),
                     CategoriaId = table.Column<int>(type: "int", nullable: false)
                 },
