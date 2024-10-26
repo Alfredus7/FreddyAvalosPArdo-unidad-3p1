@@ -12,7 +12,7 @@
         @foreach (var item in Model)
         {
                <li class="nav-item">
-            <a asp-controller="Categorias" class="text-white" asp-action="ProductosCategoria" asp-route-id="@item.CategoriaId">@item.CategoriaNombre</a>
+                <a asp-controller="Categorias" class="text-white" asp-action="ProductosCategoria" asp-route-id="@item.CategoriaId">@item.CategoriaNombre</a>
                </li>
         }     
 </ul>
