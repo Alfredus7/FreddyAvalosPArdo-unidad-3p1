@@ -1,89 +1,88 @@
 ﻿
 a {
-    color: aliceblue;
+    color: #ffd6d6; /* Color claro para enlaces en tono rosa pastel */
 }
 
 span {
-    color: darkred;
+    color: #e88a8a; /* Rosa oscuro */
 }
 
 footer {
-    background-color: firebrick;
-    opacity: 0.9;
+    background-color: #e88a8a; /* Rosa oscuro */
+    opacity: 0.8;
 }
 
 header {
-    background-color: maroon;
+    background-color: #e88a8a; /* Rosa oscuro */
     opacity: 0.9;
 }
 
 .sidebar {
-    background-color: crimson;
-    opacity: 0.8;
-}
-
-main {
-    background-color: palevioletred;
+    background-color: #ffbcbc; /* Rosa pastel suave */
     opacity: 0.7;
 }
 
+main {
+    background-color: rgba(255, 229, 229, 0.8); /* Fondo en tono rosa claro pastel con transparencia */
+}
+
 form {
-    background-color: firebrick;
+    background-color: #e88a8a; /* Rosa oscuro */
     padding: 2%;
     border-radius: 8px;
-    color: aliceblue
+    color: #ffd6d6; /* Texto claro en rosa pastel */
 }
 
 .form-control {
-    background-color: crimson;
-    border: 2px solid firebrick;
+    background-color: #ffbcbc; /* Fondo en rosa claro */
+    border: 2px solid #ffbcbc; /* Borde rosa claro */
     border-radius: 5px;
     font-size: 16px;
 }
 
     .form-control:hover {
-        background-color: darkred;
+        background-color: #ffd6d6; /* Rosa pastel más claro */
         cursor: pointer;
     }
 
-    .form-control:focus {
-        background-color: firebrick;
+    .form-control:focus, .btn:hover {
+        background-color: #ffbcbc; /* Rosa claro */
         outline: none;
-        border: 2px solid darkred;
+        border: 2px solid #ffe5e5; /* Rosa pastel */
     }
 
-.btn, btn-primary {
-    background-color: crimson;
-    border: 2px solid palevioletred;
+.btn, .btn-primary {
+    background-color: #ffbcbc; /* Fondo en rosa claro */
+    border: 2px solid #ffd6d6; /* Rosa pastel */
     border-radius: 5px;
     font-size: 16px;
     margin-top: 2%;
 }
 
     .btn:hover {
-        background-color: darkred;
         cursor: pointer;
     }
-
 
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #ffcccc;
+    background-color: #ffe5e5; /* Fondo en rosa pastel claro */
 }
 
 thead tr {
-    border: 1px solid #ff6666;
+    border: 1px solid #ffbcbc;
     padding: 8px;
     text-align: left;
-    background-color: #cc3333; 
-    color: white; 
+    background-color: #e88a8a;
+    color: white;
 }
 
-    tbody tr {
-        background-color: #ff9999; 
-    }
+tbody tr {
+    background-color: #ffe5e5; /* Rosa claro pastel */
+}
 
     tbody tr:hover {
-        background-color: #ff6666;
+        background-color: #ffbcbc; /* Rosa claro */
     }
+
+

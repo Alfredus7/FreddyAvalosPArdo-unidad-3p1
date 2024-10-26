@@ -1,13 +1,59 @@
 ﻿@model IEnumerable<Unidad3P1.ViewModels.ProductoViewModel>
-@foreach (var item in Model)
-{
-    <div class="productitos">
-        <div class="productito">
-            <img src="@item.ImagenUrl" alt="Alternate Text" />
-            <p>@item.CategoriaId @item.Nombre</p>
-            <p style="background-color: antiquewhite">@item.Precio Bs</p>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0">
+                <img class="card-img-top" src="@item.ImagenUrl" alt="Imagen de @item.Nombre" style="height: 200px; object-fit: cover;" />
+                <div class="card-body text-center">
+                    <h2 class="card-title font-weight-bold">@item.Nombre</h2>
+                    <p class="card-text text-white">Precio: @item.Precio Bs</p>
+                    <div class="d-flex justify-content-center">
+                        <a asp-action="Details" asp-route-id="@item.ProductoId" class="btn btn-outline-primary me-2">Ver Detalles</a>
+                        <a asp-action="Edit" asp-route-id="@item.ProductoId" class="btn btn-outline-secondary">Editar</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-}
+    }
+</div>
+
+
+
+<style>
+    /* Fondo personalizado para la tarjeta */
+    .card {
+        border: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border-radius: 20px; /* Aumenta el valor para bordes más redondeados */
+        background: #e88a8a;
+    }
+
+    /* Imagen circular con tamaño fijo */
+    .card-img-custom {
+        object-fit: cover;
+        border-radius: 50%;
+        margin: 15px auto;
+        display: block;
+        border: 4px solid #ffe5e5; /* Borde claro pastel */
+    }
+
+    /* Botones personalizados */
+    .btn {
+        background-color: #ffbcbc; /* Rosa claro */
+        color: #ffe5e5; /* Texto claro */
+        border: none;
+        border-radius: 20px; /* Mantén los bordes redondeados en los botones */
+        padding: 8px 16px;
+        transition: background-color 0.3s ease;
+        margin: 5px;
+    }
+
+        .btn:hover {
+            background-color: #d19a9a; /* Rosa oscuro */
+        }
+</style>
+
 
          
