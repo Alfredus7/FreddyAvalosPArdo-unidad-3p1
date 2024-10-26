@@ -23,7 +23,7 @@ namespace Unidad3P1.ViewComponents
                 .Where(x => x.CategoriaId == id)
                 .ToListAsync();
             var modelsList = _mapper.Map<List<ProductoViewModel>>(entidades);
-            return View("MenuProductos", modelsList);
+            return View(modelsList);
         }
     }
 }
