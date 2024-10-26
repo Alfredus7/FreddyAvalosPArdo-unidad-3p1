@@ -25,23 +25,9 @@ namespace Unidad3P1.Data.Entidades
 
         [Required]
         [StringLength(100)]
-        public string Direccion1 { get; set; }
+        public string Direccion { get; set; }
 
-        public string Direccion2 { get; set; }
-
-
-        [Required]
-        [StringLength(25)]
-        [DataType(DataType.PhoneNumber)]
-        public string Telefono { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        [DataType(DataType.EmailAddress)]
-        public string DireccionCorreo { get; set; }
-
-
-        public decimal OrdenTotal { get; set; }
+        public int Cantidad { get; set; }
 
         public DateTime FechaOrden { get; set; }
 

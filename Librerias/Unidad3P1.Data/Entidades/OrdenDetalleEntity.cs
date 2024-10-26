@@ -15,8 +15,7 @@ namespace Unidad3P1.Data.Entidades
         public int OrdenDetalleId { get; set; }
         public int OrdenId { get; set; }
         public int ProductoId { get; set; }
-        public int Cantidad { get; set; }
-        public decimal Precio { get; set; }
+        public decimal PrecioTotal { get; set; }
         public virtual ProductoEntity Producto { get; set; }
         public virtual OrdenEntity Orden { get; set; }
     }
