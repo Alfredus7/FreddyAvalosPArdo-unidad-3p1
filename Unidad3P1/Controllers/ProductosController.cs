@@ -57,6 +57,18 @@ namespace Unidad3P1.Controllers
             return View(viewModel);
         }
 
+        public async Task<IActionResult> ProductosComprar(int? id)
+        {
+
+            var producto = await _context.Producto
+                .Include(p => p.Categoria)
+                .FirstOrDefaultAsync(m => m.ProductoId == id);
+            var viewModel = _mapper.Map<ProductoViewModel>(producto);
+
+            return View(viewModel);
+        }
+
+        
         // GET: Productos/Create
         public IActionResult Create()
         {

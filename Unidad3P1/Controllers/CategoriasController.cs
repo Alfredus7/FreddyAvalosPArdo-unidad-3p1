@@ -189,7 +189,7 @@ namespace Unidad3P1.Controllers
         {
             return _context.Categoria.Any(e => e.CategoriaId == id);
         }
-        public async Task<IActionResult> Productos(int? id)
+        public async Task<IActionResult> ProductosCategoria(int? id)
         {
             return View(id);
         }
