@@ -1,63 +1,3 @@
-form {
-    background-color: #b46464; /* Rosa oscuro */
-    padding: 2%;
-    border-radius: 8px;
-    color: #ffd6d6; /* Texto claro en rosa pastel */
-}
-
-.form-control {
-    background-color: #ffbcbc; /* Fondo en rosa claro */
-    border: 2px solid #ffbcbc; /* Borde rosa claro */
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-    .form-control:hover {
-        background-color: #ffd6d6; /* Rosa pastel más claro */
-        cursor: pointer;
-    }
-
-    .form-control:focus, .btn:hover {
-        background-color: #ffbcbc; /* Rosa claro */
-        outline: none;
-        border: 2px solid #ffe5e5; /* Rosa pastel */
-    }
-
-.btn, .btn-primary {
-    background-color: #ffbcbc; /* Fondo en rosa claro */
-    border: 2px solid #ffd6d6; /* Rosa pastel */
-    border-radius: 5px;
-    font-size: 16px;
-    margin-top: 2%;
-}
-
-.btn:hover {
-    cursor: pointer;
- }
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #ffe5e5; /* Fondo en rosa pastel claro */
-}
-
-thead tr {
-    border: 1px solid #ffbcbc;
-    padding: 8px;
-    text-align: left;
-    background-color: #e88a8a;
-    color: white;
-}
-
-tbody tr {
-    background-color: #ffe5e5; /* Rosa claro pastel */
-}
-
-    tbody tr:hover {
-        background-color: #ffbcbc; /* Rosa claro */
-    }
-
-
 /*body, html {
     background-image: url('https://images.alphacoders.com/864/thumb-1920-864993.jpg');
     background-attachment: fixed;
@@ -67,37 +7,14 @@ tbody tr {
     font-family: 'Source Sans Pro', sans-serif;
     height: 100%;
     overflow-x: hidden;
-}
+}*/
 
 a {
     color: aliceblue;
 }
 
-span {
-    color: darkred;
-}
-
-footer {
-    background-color: firebrick;
-    opacity: 0.9;
-}
-header{
-    background-color: maroon;
-    opacity: 0.9;
-}
-
-.sidebar {
-    background-color: crimson;
-    opacity: 0.8;
-}
-
-main {
-    background-color: palevioletred;
-    opacity: 0.7;
-}
-
 form {
-    background-color: firebrick;
+    background-color: crimson;
     padding: 2%;
     border-radius: 8px;
     color: aliceblue
@@ -108,7 +25,7 @@ hr{
     
 }
 .form-control {
-    background-color: crimson;
+    background-color: indianred;
     border: 2px solid firebrick;
     border-radius: 5px;
     font-size: 16px;
@@ -126,7 +43,7 @@ hr{
     }
 
 .btn, btn-primary {
-    background-color: crimson;
+    background-color: indianred;
     border: 2px solid palevioletred;
     border-radius: 5px;
     font-size: 16px;
@@ -141,22 +58,22 @@ hr{
 
 table {
     width: 100%;
-    border-collapse: collapse;*/ /* Para evitar bordes dobles */
-    /*background-color: #ffcccc;*/ /* Fondo claro rojizo para la tabla */
-/*}
+    border-collapse: collapse; 
+    background-color: #ffcccc;  
+}
 
 thead tr {
-    border: 1px solid #ff6666;*/ /* Borde rojo suave alrededor de las celdas */
-    /*padding: 8px;
+    border: 1px solid #ff6666;  
+    padding: 8px;
     text-align: left;
-    background-color: #cc3333;*/ /* Fondo rojo más oscuro para los encabezados */
-    /*color: white;*/ /* Color blanco para el texto en los encabezados */
-/*}
+    background-color: #cc3333; 
+    color: white; 
+}
 
 tbody tr {
-    background-color: #ff9999;*/ /* Fondo rojizo claro para las filas pares */
-/*}
+    background-color: #ff9999; 
+}
 
     tbody tr:hover {
-        background-color: #ff6666;*/ /* Cambio de color al pasar el cursor por encima */
-    /*}*/
+        background-color: #ff6666; 
+    }
