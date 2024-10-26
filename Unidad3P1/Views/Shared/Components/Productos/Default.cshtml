@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Unidad3P1.ViewModels.ProductoViewModel>
+@foreach (var item in Model)
+{
+    <div class="productitos">
+        <div class="productito">
+            <img src="@item.ImagenUrl" alt="Alternate Text" />
+            <p>@item.CategoriaId @item.Nombre</p>
+            <p style="background-color: antiquewhite">@item.Precio Bs</p>
+        </div>
+    </div>
+}
+
+         

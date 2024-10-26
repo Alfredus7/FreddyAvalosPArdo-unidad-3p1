@@ -4,14 +4,16 @@
     ViewData["Title"] = "Categoria de productos";
 }
 
-<h2>Categoria de productos :</h2>
+<h1>Categoria de productos</h1>
 
  <ul class="nav flex-column p-3">
-                        @foreach (var item in Model)
-                        {
-                                 <li class="nav-item">
-                                      <a asp-action="Edit" class="text-black" asp-route-id="@item.CategoriaId"> @Html.DisplayFor(modelItem => item.CategoriaNombre)</a>
-                                 </li>
-                        }  
+                    
+
+        @foreach (var item in Model)
+        {
+               <li class="nav-item">
+                   <a asp-controller="Categorias"  class="text-white"  asp-action="Productos" asp-route-id="@item.CategoriaId">@item.CategoriaNombre</a>
+               </li>
+        }     
 </ul>
          
