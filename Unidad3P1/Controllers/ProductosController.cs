@@ -57,7 +57,7 @@ namespace Unidad3P1.Controllers
             return View(viewModel);
         }
 
-        public async Task<IActionResult> ProductosComprar(int? id)
+        public async Task<IActionResult> ProductosDetalles(int? id)
         {
 
             var producto = await _context.Producto
