@@ -1,28 +1,29 @@
 ﻿
 a {
-    color: #ffd6d6; /* Color claro para enlaces en tono rosa pastel */
+    color: aliceblue;
 }
 
 span {
-    color: #e88a8a; /* Rosa oscuro */
+    color: darkred;
 }
 
 footer {
-    background-color: #e88a8a; /* Rosa oscuro */
-    opacity: 0.8;
+    background-color: firebrick;
+    opacity: 0.9;
 }
 
 header {
-    background-color: #e88a8a; /* Rosa oscuro */
+    background-color: maroon;
     opacity: 0.9;
 }
 
 .sidebar {
-    background-color: #ffbcbc; /* Rosa pastel suave */
-    opacity: 0.7;
+    background-color: crimson;
+    opacity: 0.8;
 }
 
 main {
-    background-color: rgba(255, 229, 229, 0.8); /* Fondo en tono rosa claro pastel con transparencia */
+    background-color: rgba(219, 112, 147, 0.7); 
+
 }
 
