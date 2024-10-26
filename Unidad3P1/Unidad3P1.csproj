@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\" />
+    <Folder Include="wwwroot\css\app\Components\" />
   </ItemGroup>
 
 </Project>

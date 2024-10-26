@@ -14,19 +14,15 @@ namespace Unidad3P1.Data.Entidades
     {
         public int OrdenId { get; set; }
 
-
         [Required]
         [StringLength(50)]
         public string Nombre { get; set; }
-
         [Required]
         [StringLength(50)]
         public string Apellido { get; set; }
-
         [Required]
         [StringLength(100)]
         public string Direccion { get; set; }
-
         public int Cantidad { get; set; }
 
         public DateTime FechaOrden { get; set; }
