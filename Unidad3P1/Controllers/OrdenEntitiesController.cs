@@ -153,5 +153,26 @@ namespace Unidad3P1.Controllers
         {
             return _context.Ordene.Any(e => e.OrdenId == id);
         }
+
+        public IActionResult OrdenesProductos()
+        {
+            return View();
+        }
+
+        // POST: OrdenEntities/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> OrdenesProductos([Bind("OrdenId,Nombre,Apellido,Direccion,Cantidad,FechaOrden")] OrdenEntity ordenEntity)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(ordenEntity);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(ordenEntity);
+        }
     }
 }

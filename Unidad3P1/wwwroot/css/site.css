@@ -14,7 +14,7 @@ body, html {
     background-color: crimson;
 }
 
-/* Imagen circular con tamaño fijo */
+/* Imagen circular con tamaï¿½o fijo */
 .card-img-top {
     border-radius: 10%;
     display: block;
@@ -79,7 +79,7 @@ table {
 }
 
 thead tr {
-    border: 1px solid #ffd966; /* Bordes amarillos más oscuros */
+    border: 1px solid #ffd966; /* Bordes amarillos mï¿½s oscuros */
     padding: 8px;
     text-align: left;
     background-color: #ffcc00; /* Fondo del encabezado amarillo oscuro */
@@ -91,6 +91,6 @@ tbody tr {
 }
 
     tbody tr:hover {
-        background-color: #ffd966; /* Fondo amarillo más oscuro al pasar el mouse */
+        background-color: #ffd966; /* Fondo amarillo mï¿½s oscuro al pasar el mouse */
     }
 
