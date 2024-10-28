@@ -33,18 +33,6 @@ namespace Unidad3P1.Controllers
             var entidades = await _context.Categoria.ToListAsync();
             var modelList = _mapper.Map<List<CategoryViewModel>>(entidades);
 
-            //IList<CategoryViewModel> modelList = new List<CategoryViewModel>();
-            //foreach (Categoria categoriaEntity in entidades)
-            //{
-            //    CategoryViewModel viewModel = new CategoryViewModel
-            //    {
-            //        CategoriaId = categoriaEntity.CategoriaId,
-            //        CategoriaNombre = categoriaEntity.CategoriaNombre,
-            //        Descripcion = categoriaEntity.Descripcion
-            //    };
-            //    modelList.Add(viewModel);
-            //}
-
             return View(modelList);
         }
 

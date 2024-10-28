@@ -28,6 +28,6 @@ namespace Unidad3P1.Data.Entidades
         public DateTime FechaOrden { get; set; }
 
 
-        public virtual ICollection<OrdenDetalleEntity> Detalles { get; set; }
+        public virtual ICollection<OrdenDetalleEntity>? Detalles { get; set; }
     }
 }
