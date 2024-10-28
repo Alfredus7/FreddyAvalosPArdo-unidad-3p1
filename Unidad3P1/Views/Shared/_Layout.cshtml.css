@@ -3,19 +3,11 @@ a {
     color: aliceblue;
 }
 
-span {
-    color: darkred;
-}
-
-footer {
-    background-color: firebrick;
+footer, header {
+    background-color: darkred;
     opacity: 0.9;
 }
 
-header {
-    background-color: maroon;
-    opacity: 0.9;
-}
 
 .sidebar {
     background-color: crimson;
