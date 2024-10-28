@@ -154,7 +154,13 @@ namespace Unidad3P1.Controllers
             return _context.Ordene.Any(e => e.OrdenId == id);
         }
 
-        public IActionResult OrdenesProductos()
+
+
+
+
+
+
+        public IActionResult OrdenesProductos(int? id)
         {
             return View();
         }

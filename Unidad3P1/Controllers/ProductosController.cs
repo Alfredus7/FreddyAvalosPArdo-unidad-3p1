@@ -25,7 +25,7 @@ namespace Unidad3P1.Controllers
             _context = context;
             _mapper = mapper;
         }
-
+        [Authorize]
         // GET: Productos
         public async Task<IActionResult> Index()
         {
@@ -56,7 +56,7 @@ namespace Unidad3P1.Controllers
 
             return View(viewModel);
         }
-
+        [Authorize]
         public async Task<IActionResult> ProductosDetalles(int? id)
         {
 

@@ -53,9 +53,9 @@
 
 
 <div>
-    <a asp-controller="OrdenEntities" class="text-white" asp-action="OrdenesProductos" asp-route-id="@Model?.ProductoId">comprar</a>
+    <a asp-controller="OrdenEntities" class="text-white btn" asp-action="OrdenesProductos" asp-route-id="@Model?.ProductoId,@Model?.Precio">comprar</a>
 
-    <a asp-controller="Categorias" class="text-white" asp-action="ProductosCategoria" asp-route-id="@Model?.Categoria.CategoriaId" class="btn me-2 text-white">Volver lista</a>
+    <a asp-controller="Categorias" class="text-white btn" asp-action="ProductosCategoria" asp-route-id="@Model?.Categoria.CategoriaId" class="btn me-2 text-white">Volver lista</a>
 </div>
 
 

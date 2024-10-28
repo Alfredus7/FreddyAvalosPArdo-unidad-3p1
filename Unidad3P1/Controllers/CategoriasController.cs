@@ -26,7 +26,7 @@ namespace Unidad3P1.Controllers
             _context = context;
             _mapper = mapper;
         }
-
+        [Authorize]
         // GET: Categorias
         public async Task<IActionResult> Index()
         {
