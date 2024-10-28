@@ -25,19 +25,19 @@ body, html {
 
 /* Botones personalizados */
 .btn, .btn-primary {
-    background-color: rgb(255, 105, 135);
+    background-color: rgb(255, 97, 97);
     border: 2px solid palevioletred;
     border-radius: 5px;
     font-size: 16px;
     margin-top: 2%;
 }
 
- .btn:hover, .btn:focus, btn:after {
-        background-color: darkred;
+    .btn:hover, .btn:focus, btn:after {
+        background-color: rgb(114, 0, 0);
         border: 2px solid rgb(248, 128, 168);
         border-radius: 5px;
         cursor: pointer;
- }
+    }
 
 a {
     color: aliceblue;
