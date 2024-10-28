@@ -176,7 +176,6 @@ namespace Unidad3P1.Controllers
             {
                 _context.Add(ordenEntity);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
             return View(ordenEntity);
         }
