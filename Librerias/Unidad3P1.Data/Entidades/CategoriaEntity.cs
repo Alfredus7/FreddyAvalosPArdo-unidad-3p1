@@ -15,6 +15,6 @@ namespace Unidad3P1.Data.Entidades
         public int CategoriaId { get; set; }
         public string CategoriaNombre { get; set; }
         public string Descripcion { get; set; }   
-        public virtual ICollection<ProductoEntity> Items { get; set; }
+        public virtual ICollection<ProductoEntity>? Items { get; set; }
     }
 }
