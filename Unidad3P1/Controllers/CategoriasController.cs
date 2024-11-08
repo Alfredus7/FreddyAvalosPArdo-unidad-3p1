@@ -33,9 +33,9 @@ namespace Unidad3P1.Controllers
         {
             WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
 
-            var modelList = webApiClient.GetCategorias<List<CategoryViewModel>>();
+            var modelList = webApiClient.GetCategoria<List<CategoryViewModel>>();
 
-            return View(modelList);
+            return View(modelList.Data);
         }
 
         // GET: Categorias/Details/5

@@ -34,7 +34,7 @@ namespace Unidad3P1.WebApiClients
         /// <param name="username">Nombre de usuario opcional</param>
         public WebApiClient(string username = "")
         {
-            ApiBaseAddress = "https://localhost:7210";
+            ApiBaseAddress = "https://localhost:7244";
             _apiCredenciales = "admin@email.com:As12345!";
             _username = username;
             ResetWebClient();
@@ -51,9 +51,9 @@ namespace Unidad3P1.WebApiClients
         /// </summary>
         /// <typeparam name="T">Tipo de dato</typeparam>
         /// <returns>Resultado de la llamada a la API</returns>
-        public CoorporateApiResult<T> GetCategorias<T>()
+        public CoorporateApiResult<T> GetCategoria<T>()
         {
-            string address = "/api/Categorias";
+            string address = "api/Categoria";
             return GetData<T>(address);
         }
 
