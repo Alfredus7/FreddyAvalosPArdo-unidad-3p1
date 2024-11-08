@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Unidad3P1.Data;
 using Unidad3P1.AutomapperProfiles;
+using Unidad3P1.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(CategoryProfile));
 builder.Services.AddAutoMapper(typeof(ProductosProfile));
 
-var app = builder.Build(); 
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

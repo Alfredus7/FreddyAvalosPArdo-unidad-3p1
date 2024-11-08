@@ -14,7 +14,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddAutoMapper(typeof(CategoryProfile));
+builder.Services.AddAutoMapper(typeof(CategoryProfileApi));
 
 var app = builder.Build();
 

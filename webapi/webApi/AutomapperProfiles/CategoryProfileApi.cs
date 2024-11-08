@@ -5,9 +5,9 @@ using webApi.Dtos;
 
 namespace webApi.AutomapperProfiles
 {
-    public class CategoryProfile : Profile
+    public class CategoryProfileApi : Profile
     {   
-        public CategoryProfile() 
+        public CategoryProfileApi() 
         {
             CreateMap<CategoriaEntity, CategoryDtos>()
                 .ForMember(dest => dest.CategoriaId, opt => opt.MapFrom(src => src.CategoriaId))
