@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Librerias\Unidad3P1.Data\Unidad3P1.Data.csproj" />
+    <ProjectReference Include="..\..\Librerias\Unidad3P1.Data\Data.csproj" />
   </ItemGroup>
 
 </Project>

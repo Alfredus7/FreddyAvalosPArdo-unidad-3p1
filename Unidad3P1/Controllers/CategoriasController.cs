@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Unidad3P1.Data;
 using Unidad3P1.Data.Entidades;
 using Unidad3P1.ViewModels;
+using webApi.Dtos;
 
 
 namespace Unidad3P1.Controllers
@@ -31,7 +32,7 @@ namespace Unidad3P1.Controllers
         public async Task<IActionResult> Index()
         {
             var entidades = await _context.Categoria.ToListAsync();
-            var modelList = _mapper.Map<List<CategoryViewModel>>(entidades);
+            var modelList = _mapper.Map<List<CategoryDtos>>(entidades);
 
             return View(modelList);
         }

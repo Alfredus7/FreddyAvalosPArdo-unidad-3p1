@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unidad3P1.Data", "Librerias\Unidad3P1.Data\Unidad3P1.Data.csproj", "{CC48BEE2-0BDE-42D0-BF36-88DEA8ECD4AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Librerias\Unidad3P1.Data\Data.csproj", "{CC48BEE2-0BDE-42D0-BF36-88DEA8ECD4AC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unidad3P1", "Unidad3P1\Unidad3P1.csproj", "{1F57F379-54E1-4676-8622-8AC2C7AB6D33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webApi", "webapi\webApi\webApi.csproj", "{95B81111-E203-4B51-AF46-1D8E99EE10DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webApi", "webapi\webApi\webApi.csproj", "{95B81111-E203-4B51-AF46-1D8E99EE10DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webtets", "Webtets\Webtets.csproj", "{8AB03BCC-F7FB-4D82-B8F2-A2269313F0E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{95B81111-E203-4B51-AF46-1D8E99EE10DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95B81111-E203-4B51-AF46-1D8E99EE10DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95B81111-E203-4B51-AF46-1D8E99EE10DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AB03BCC-F7FB-4D82-B8F2-A2269313F0E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AB03BCC-F7FB-4D82-B8F2-A2269313F0E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AB03BCC-F7FB-4D82-B8F2-A2269313F0E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AB03BCC-F7FB-4D82-B8F2-A2269313F0E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
