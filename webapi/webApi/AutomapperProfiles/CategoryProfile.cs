@@ -9,7 +9,7 @@ namespace Unidad3P1.AutomapperProfiles
     {   
         public CategoryProfile() 
         {
-            CreateMap<CategoriaEntity, CategoryViewModel>()
+            CreateMap<CategoriaEntity, CategoryDtos>()
                 .ForMember(dest => dest.CategoriaId, opt => opt.MapFrom(src => src.CategoriaId))
                 .ForMember(dest => dest.CategoriaNombre, opt => opt.MapFrom(src => src.CategoriaNombre))
                 .ForMember(dest => dest.Descripcion, opt => opt.MapFrom(src => src.Descripcion))

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,10 +16,12 @@ namespace webApi.Controllers
     public class CategoriaController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-
-        public CategoriaController(ApplicationDbContext context)
+        private readonly IMapper _mapper;
+        public CategoriaController(ApplicationDbContext context,
+            IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Categoria

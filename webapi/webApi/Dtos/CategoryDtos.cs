@@ -2,7 +2,7 @@
 
 namespace Unidad3P1.ViewModels
 {
-    public class CategoryViewModel
+    public class CategoryDtos
     {
         public int CategoriaId { get; set; }
         [Required]
