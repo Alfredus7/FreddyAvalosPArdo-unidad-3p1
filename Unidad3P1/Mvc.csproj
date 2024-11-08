@@ -30,7 +30,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Librerias\Unidad3P1.Data\Data.csproj" />
-    <ProjectReference Include="..\webapi\webApi\WebApi.csproj" />
+    <ProjectReference Include="..\webapi\webApi\ApiWeb.csproj" />
   </ItemGroup>
 
   <ItemGroup>

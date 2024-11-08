@@ -31,8 +31,9 @@ namespace Unidad3P1.Controllers
         // GET: Categorias
         public async Task<IActionResult> Index()
         {
-            var entidades = await _context.Categoria.ToListAsync();
-            var modelList = _mapper.Map<List<CategoryViewModel>>(entidades);
+            WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
+
+            var modelList = webApiClient.GetCategorias<List<CategoryViewModel>>();
 
             return View(modelList);
         }
