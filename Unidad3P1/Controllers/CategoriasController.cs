@@ -32,7 +32,7 @@ namespace Unidad3P1.Controllers
         public async Task<IActionResult> Index()
         {
             var entidades = await _context.Categoria.ToListAsync();
-            var modelList = _mapper.Map<List<CategoryDtos>>(entidades);
+            var modelList = _mapper.Map<List<CategoryViewModel>>(entidades);
 
             return View(modelList);
         }
