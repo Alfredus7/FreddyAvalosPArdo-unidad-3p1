@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Unidad3P1.Data.Entidades;
-using Unidad3P1.ViewModels;
+using webApi.Dtos;
 
 
-namespace Unidad3P1.AutomapperProfiles
+namespace webApi.AutomapperProfiles
 {
     public class CategoryProfile : Profile
     {   

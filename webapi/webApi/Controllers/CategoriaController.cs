@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Unidad3P1.Data;
 using Unidad3P1.Data.Entidades;
+using webApi.Dtos;
 
 namespace webApi.Controllers
 {
@@ -26,14 +27,17 @@ namespace webApi.Controllers
 
         // GET: api/Categoria
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CategoriaEntity>>> GetCategoria()
+        public async Task<ActionResult<IEnumerable<CategoryDtos>>> GetCategoria()
         {
-            return await _context.Categoria.ToListAsync();
+            var entidades = await _context.Categoria.ToListAsync();
+            var modelList = _mapper.Map<List<CategoryDtos>>(entidades);
+
+            return Ok(modelList);
         }
 
         // GET: api/Categoria/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<CategoriaEntity>> GetCategoriaEntity(int id)
+        public async Task<ActionResult<CategoryDtos>> GetCategoriaEntity(int id)
         {
             var categoriaEntity = await _context.Categoria.FindAsync(id);
 
@@ -42,19 +46,22 @@ namespace webApi.Controllers
                 return NotFound();
             }
 
-            return categoriaEntity;
+            // Mapear la entidad a DTO
+            var categoriaDto = _mapper.Map<CategoryDtos>(categoriaEntity);
+            return Ok(categoriaDto);
         }
 
         // PUT: api/Categoria/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategoriaEntity(int id, CategoriaEntity categoriaEntity)
+        public async Task<IActionResult> PutCategoriaEntity(int id, CategoryDtos categoriaDto)
         {
-            if (id != categoriaEntity.CategoriaId)
+            if (id != categoriaDto.CategoriaId)
             {
                 return BadRequest();
             }
 
+            // Mapear el DTO a la entidad
+            var categoriaEntity = _mapper.Map<CategoriaEntity>(categoriaDto);
             _context.Entry(categoriaEntity).State = EntityState.Modified;
 
             try
@@ -63,28 +70,26 @@ namespace webApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoriaEntityExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
+              
                     throw;
-                }
             }
 
             return NoContent();
         }
 
         // POST: api/Categoria
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<CategoriaEntity>> PostCategoriaEntity(CategoriaEntity categoriaEntity)
+        public async Task<ActionResult<CategoryDtos>> PostCategoriaEntity(CategoryDtos categoriaDto)
         {
+            // Mapear el DTO a la entidad
+            var categoriaEntity = _mapper.Map<CategoriaEntity>(categoriaDto);
             _context.Categoria.Add(categoriaEntity);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCategoriaEntity", new { id = categoriaEntity.CategoriaId }, categoriaEntity);
+            // Mapear de vuelta la entidad creada al DTO para la respuesta
+            var createdCategoriaDto = _mapper.Map<CategoryDtos>(categoriaEntity);
+
+            return CreatedAtAction("GetCategoriaEntity", new { id = createdCategoriaDto.CategoriaId }, createdCategoriaDto);
         }
 
         // DELETE: api/Categoria/5
@@ -103,9 +108,5 @@ namespace webApi.Controllers
             return NoContent();
         }
 
-        private bool CategoriaEntityExists(int id)
-        {
-            return _context.Categoria.Any(e => e.CategoriaId == id);
-        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Unidad3P1.ViewModels
+namespace webApi.Dtos
 {
     public class CategoryDtos
     {

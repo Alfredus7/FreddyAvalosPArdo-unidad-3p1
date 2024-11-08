@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Unidad3P1.Data;
+using webApi.AutomapperProfiles;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -12,6 +13,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddAutoMapper(typeof(CategoryProfile));
 
 var app = builder.Build();
 
