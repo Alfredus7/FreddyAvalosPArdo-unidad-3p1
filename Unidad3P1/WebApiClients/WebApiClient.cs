@@ -56,6 +56,29 @@ namespace Unidad3P1.WebApiClients
             string address = "api/Categoria";
             return GetData<T>(address);
         }
+        public CoorporateApiResult<T> GetCategoriaById<T>(int id)
+        {
+            string address = $"api/Categoria/{id}";
+            return GetData<T>(address);
+        }
+
+        public CoorporateApiResult<bool> DeleteCategoria<T>(int id)
+        {
+            string resource = $"api/Categoria/{id}";
+            string address = GenerateApiAddress(resource);
+            return DeleteEntity<bool>(address);
+        }
+
+
+
+
+
+
+
+
+
+
+
 
         private CoorporateApiResult<T> GetData<T>(string module)
         {

@@ -46,16 +46,17 @@ namespace Unidad3P1.Controllers
                 return NotFound();
             }
 
-            var categoriaEntity = await _context.Categoria
-                .FirstOrDefaultAsync(m => m.CategoriaId == id);
-            if (categoriaEntity == null)
+            WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
+            var Views = webApiClient.GetCategoriaById<CategoryViewModel>(id.Value);
+
+
+            if (Views.Data == null)
             {
                 return NotFound();
             }
+   
 
-            var viewModel = _mapper.Map<CategoryViewModel>(categoriaEntity);
-
-            return View(viewModel);
+            return View(Views.Data);
         }
 
         // GET: Categorias/Create
@@ -90,15 +91,16 @@ namespace Unidad3P1.Controllers
                 return NotFound();
             }
 
-            var categoria = await _context.Categoria.FindAsync(id);
-            if (categoria == null)
+
+            WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
+            var Views = webApiClient.GetCategoriaById<CategoryViewModel>(id.Value);
+
+            if (Views.Data == null)
             {
                 return NotFound();
             }
 
-            var viewModel = _mapper.Map<CategoryViewModel>(categoria);
-
-            return View(viewModel);
+            return View(Views.Data);
         }
 
         // POST: Categorias/Edit/5
@@ -148,16 +150,14 @@ namespace Unidad3P1.Controllers
                 return NotFound();
             }
 
-            var categoria = await _context.Categoria
-                .FirstOrDefaultAsync(m => m.CategoriaId == id);
-            if (categoria == null)
+            WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
+            var Views = webApiClient.GetCategoriaById<CategoryViewModel>(id.Value);
+
+            if (Views.Data == null)
             {
                 return NotFound();
             }
-
-            var viewModel = _mapper.Map<CategoryViewModel>(categoria);
-
-            return View(viewModel);
+            return View(Views.Data);
         }
 
         // POST: Categorias/Delete/5
@@ -165,13 +165,12 @@ namespace Unidad3P1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var categoria = await _context.Categoria.FindAsync(id);
-            if (categoria != null)
+            WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
+            var Views = webApiClient.DeleteCategoria<CategoryViewModel>(id);
+            if (Views.Data==false)
             {
-                _context.Categoria.Remove(categoria);
+                BadRequest();
             }
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
