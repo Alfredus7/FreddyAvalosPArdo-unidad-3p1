@@ -55,15 +55,15 @@ namespace webApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCategoriaEntity(int id, CategoryDtos categoriaDto)
         {
-            if (id != categoriaDto.CategoriaId)
-            {
-                return BadRequest();
-            }
+           
 
             // Mapear el DTO a la entidad
             var categoriaEntity = _mapper.Map<CategoriaEntity>(categoriaDto);
             _context.Entry(categoriaEntity).State = EntityState.Modified;
-
+            if (id != categoriaDto.CategoriaId)
+            {
+                return BadRequest();
+            }
             try
             {
                 await _context.SaveChangesAsync();
