@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,8 +13,10 @@ using webApi.Dtos;
 
 namespace ApiWeb.Controllers
 {
+   
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = "BasicAuthenticationHandler")]
     public class ProductoController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -30,7 +33,7 @@ namespace ApiWeb.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductoDtos>>> GetProducto()
         {
-            var entidades = await _context.Producto.ToListAsync();
+            var entidades = await _context.Producto.Include(x=> x.Categoria).ToListAsync();
             var modelList = _mapper.Map<List<ProductoDtos>>(entidades);
 
             return Ok(modelList);
