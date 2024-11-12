@@ -114,6 +114,9 @@ namespace ApiWeb.Controllers
                 return NotFound();
             }
 
+            // Mapeo de la entidad a un DTO (opcional, si quieres devolver el objeto eliminado)
+            var productoDto = _mapper.Map<ProductoDtos>(productoEntity);
+
             _context.Producto.Remove(productoEntity);
             await _context.SaveChangesAsync();
 
