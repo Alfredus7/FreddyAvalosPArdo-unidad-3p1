@@ -40,28 +40,30 @@ namespace ApiWeb.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductoDtos>> GetProductoEntity(int id)
         {
-            var categoriaEntity = await _context.Producto.FindAsync(id);
+            var ProductoEntity = await _context.Producto.FindAsync(id);
 
-            if (categoriaEntity == null)
+            if (ProductoEntity == null)
             {
                 return NotFound();
             }
 
             // Mapear la entidad a DTO
-            var categoriaDto = _mapper.Map<ProductoDtos>(categoriaEntity);
-            return Ok(categoriaDto);
+            var ProductoDto = _mapper.Map<ProductoDtos>(ProductoEntity);
+            return Ok(ProductoDto);
         }
 
         // PUT: api/Producto/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProductoEntity(int id, ProductoEntity productoEntity)
+        public async Task<IActionResult> PutProductoEntity(int id, ProductoDtos productoDto)
         {
-            if (id != productoEntity.ProductoId)
+            if (id != productoDto.ProductoId)
             {
                 return BadRequest();
             }
 
+            // Mapeo de DTO a entidad
+            var productoEntity = _mapper.Map<ProductoEntity>(productoDto);
             _context.Entry(productoEntity).State = EntityState.Modified;
 
             try
@@ -83,16 +85,24 @@ namespace ApiWeb.Controllers
             return NoContent();
         }
 
+
         // POST: api/Producto
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ProductoEntity>> PostProductoEntity(ProductoEntity productoEntity)
+        public async Task<ActionResult<ProductoDtos>> PostProductoEntity(ProductoDtos productoDto)
         {
+            // Mapeo de DTO a entidad
+            var productoEntity = _mapper.Map<ProductoEntity>(productoDto);
+
             _context.Producto.Add(productoEntity);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProductoEntity", new { id = productoEntity.ProductoId }, productoEntity);
+            // Mapeo de la entidad guardada de nuevo al DTO para devolverlo
+            var productoDtoCreado = _mapper.Map<ProductoDtos>(productoEntity);
+
+            return CreatedAtAction("GetProductoEntity", new { id = productoEntity.ProductoId }, productoDtoCreado);
         }
+
 
         // DELETE: api/Producto/5
         [HttpDelete("{id}")]
