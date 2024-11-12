@@ -33,7 +33,7 @@ namespace ApiWeb.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductoDtos>>> GetProducto()
         {
-            var entidades = await _context.Producto.Include(x=> x.Categoria).ToListAsync();
+            var entidades = await _context.Producto.ToListAsync();
             var modelList = _mapper.Map<List<ProductoDtos>>(entidades);
 
             return Ok(modelList);
