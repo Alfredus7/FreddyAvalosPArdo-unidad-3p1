@@ -46,8 +46,6 @@ namespace ApiWeb.Controllers
             {
                 return NotFound();
             }
-
-            // Mapear la entidad a DTO
             var ProductoDto = _mapper.Map<ProductoDtos>(ProductoEntity);
             return Ok(ProductoDto);
         }
@@ -62,8 +60,7 @@ namespace ApiWeb.Controllers
                 return BadRequest();
             }
 
-            // Mapeo de DTO a entidad
-            var productoEntity = _mapper.Map<ProductoEntity>(productoDto);
+             var productoEntity = _mapper.Map<ProductoEntity>(productoDto);
             _context.Entry(productoEntity).State = EntityState.Modified;
 
             try
@@ -91,16 +88,14 @@ namespace ApiWeb.Controllers
         [HttpPost]
         public async Task<ActionResult<ProductoDtos>> PostProductoEntity(ProductoDtos productoDto)
         {
-            // Mapeo de DTO a entidad
             var productoEntity = _mapper.Map<ProductoEntity>(productoDto);
 
             _context.Producto.Add(productoEntity);
             await _context.SaveChangesAsync();
 
-            // Mapeo de la entidad guardada de nuevo al DTO para devolverlo
-            var productoDtoCreado = _mapper.Map<ProductoDtos>(productoEntity);
+            var productoDtos = _mapper.Map<ProductoDtos>(productoEntity);
 
-            return CreatedAtAction("GetProductoEntity", new { id = productoEntity.ProductoId }, productoDtoCreado);
+            return CreatedAtAction("GetProductoEntity", new { id = productoEntity.ProductoId }, productoDtos);
         }
 
 
@@ -114,8 +109,7 @@ namespace ApiWeb.Controllers
                 return NotFound();
             }
 
-            // Mapeo de la entidad a un DTO (opcional, si quieres devolver el objeto eliminado)
-            var productoDto = _mapper.Map<ProductoDtos>(productoEntity);
+             var productoDtos = _mapper.Map<ProductoDtos>(productoEntity);
 
             _context.Producto.Remove(productoEntity);
             await _context.SaveChangesAsync();
