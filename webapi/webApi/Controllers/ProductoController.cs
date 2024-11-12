@@ -33,25 +33,32 @@ namespace ApiWeb.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductoDtos>>> GetProducto()
         {
-            var entidades = await _context.Producto.ToListAsync();
+            var entidades = await _context.Producto
+                                          .Include(p => p.Categoria) // Incluir la categoría
+                                          .ToListAsync();
             var modelList = _mapper.Map<List<ProductoDtos>>(entidades);
 
             return Ok(modelList);
         }
 
+
         // GET: api/Producto/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductoDtos>> GetProductoEntity(int id)
         {
-            var ProductoEntity = await _context.Producto.FindAsync(id);
+            var productoEntity = await _context.Producto
+                                               .Include(p => p.Categoria) // Incluir la categoría
+                                               .FirstOrDefaultAsync(p => p.ProductoId == id);
 
-            if (ProductoEntity == null)
+            if (productoEntity == null)
             {
                 return NotFound();
             }
-            var ProductoDtos = _mapper.Map<ProductoDtos>(ProductoEntity);
-            return Ok(ProductoDtos);
+
+            var productoDto = _mapper.Map<ProductoDtos>(productoEntity);
+            return Ok(productoDto);
         }
+
 
         // PUT: api/Producto/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

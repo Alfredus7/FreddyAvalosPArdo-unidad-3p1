@@ -18,6 +18,6 @@ namespace webApi.Dtos
         public int CategoriaId { get; set; }
 
         [ForeignKey("CategoriaId")]
-        public virtual CategoriaEntity? Categoria { get; set; }
+        public virtual CategoryDtos? Categoria { get; set; }
     }
 }
