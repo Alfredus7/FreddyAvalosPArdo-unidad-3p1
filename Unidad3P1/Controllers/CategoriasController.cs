@@ -33,7 +33,7 @@ namespace Unidad3P1.Controllers
         {
             WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
 
-            var modelList = webApiClient.GetCategoria<List<CategoryViewModel>>();
+            var modelList = webApiClient.GetCategorias<List<CategoryViewModel>>();
 
             return View(modelList.Data);
         }
@@ -166,7 +166,7 @@ namespace Unidad3P1.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
-            var Views = webApiClient.DeleteCategoria<CategoryViewModel>(id);
+            var Views = webApiClient.DeleteCategoriaById<CategoryViewModel>(id);
             if (Views.Data==false)
             {
                 BadRequest();

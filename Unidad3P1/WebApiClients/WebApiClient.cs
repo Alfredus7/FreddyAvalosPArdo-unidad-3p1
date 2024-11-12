@@ -18,7 +18,7 @@ using System.Collections.Specialized;
 namespace Unidad3P1.WebApiClients
 {
     /// <summary>
-    /// Cliente de API corporativa
+    /// The Corporate Api Client
     /// </summary>
     public sealed class WebApiClient : IDisposable
     {
@@ -29,13 +29,15 @@ namespace Unidad3P1.WebApiClients
         private readonly string _apiCredenciales;
 
         /// <summary>
-        /// Constructor del cliente de API corporativa
+        /// The Corporate Api Client
         /// </summary>
-        /// <param name="username">Nombre de usuario opcional</param>
+        /// <param name="transmittionMedium">Type of medium you wish the api client to talk in (Default is JSON)</param>
         public WebApiClient(string username = "")
         {
-            ApiBaseAddress = "https://localhost:7244";
+            string value = string.Empty;
+            ApiBaseAddress = "https://localhost:7210";
             _apiCredenciales = "admin@email.com:As12345!";
+
             _username = username;
             ResetWebClient();
         }
@@ -46,124 +48,166 @@ namespace Unidad3P1.WebApiClients
             _client.Headers[HttpRequestHeader.ContentType] = "application/json";
         }
 
+        #region Methods
+
+        #region Categorias
+
         /// <summary>
-        /// Obtener categorías
+        /// GetPartnerCodes
         /// </summary>
-        /// <typeparam name="T">Tipo de dato</typeparam>
-        /// <returns>Resultado de la llamada a la API</returns>
-        public CoorporateApiResult<T> GetCategoria<T>()
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public CoorporateApiResult<T> GetCategorias<T>()
         {
             string address = "api/Categoria";
+
             return GetData<T>(address);
         }
+
         public CoorporateApiResult<T> GetCategoriaById<T>(int id)
         {
             string address = $"api/Categoria/{id}";
+
             return GetData<T>(address);
         }
 
-        public CoorporateApiResult<bool> DeleteCategoria<T>(int id)
+        public CoorporateApiResult<bool> DeleteCategoriaById<T>(int id)
         {
-            string resource = $"api/Categoria/{id}";
-            string address = GenerateApiAddress(resource);
+            string recurso = $"api/Categoria/{id}";
+
+            string address = GenerateApiAddress(recurso);
+
             return DeleteEntity<bool>(address);
         }
 
+        public CoorporateApiResult<CategoryViewModel> CrearCategoria<CategoryViewModel>(CategoryViewModel modelCategoria)
+        {
+            string recurso = $"api/Categoria";
+
+            //string address = GenerateApiAddress(recurso);
+
+            return PostData<CategoryViewModel, CategoryViewModel>(recurso, modelCategoria);
+        }
+
+        public CoorporateApiResult<bool> UpdateCategoria<CategoryViewModel>(CategoryViewModel modelCategoria)
+        {
+            string recurso = $"api/Categoria";
+
+            return PutData<CategoryViewModel>(modelCategoria, recurso);
+        }
 
 
+        #endregion
 
 
+        #endregion
 
-
-
-
-
-
+        #region Private Methods
 
         private CoorporateApiResult<T> GetData<T>(string module)
         {
             string address = GenerateApiAddress(module);
+
             AddAuthenticationHeader();
             CoorporateApiResult<T> result = new CoorporateApiResult<T>();
-
             try
             {
+                // Make the request
                 var response = _client.DownloadString(address);
                 result.Data = JsonConvert.DeserializeObject<T>(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
-
             return result;
+
         }
 
         private CoorporateApiResult<TU> PostData<T, TU>(T model, string module)
         {
             string address = GenerateApiAddress(module);
+
+            // Deserialize the response into a GUID
             return PostData<T, TU>(address, model);
         }
 
-        private CoorporateApiResult<TU> PutData<T, TU>(T model, string module)
+        private CoorporateApiResult<bool> PutData<T>(T model, string module)
         {
             string address = GenerateApiAddress(module);
-            return PutData<T, TU>(address, model);
+
+            // Deserialize the response into a GUID
+            return PutData<T>(address, model);
         }
 
         private CoorporateApiResult<TU> PostData<T, TU>(string address, T model)
         {
+            // Serialize the data we are sending in to JSON
             string serialisedData = JsonConvert.SerializeObject(model);
-            AddAuthenticationHeader();
-            CoorporateApiResult<TU> result = new CoorporateApiResult<TU>();
 
+            AddAuthenticationHeader();
+
+            CoorporateApiResult<TU> result = new CoorporateApiResult<TU>();
             try
             {
+                // Make the request
                 var response = _client.UploadString(address, serialisedData);
                 result.Data = JsonConvert.DeserializeObject<TU>(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
 
+            // Deserialize the response into a GUID
             return result;
         }
 
         private CoorporateApiResult<TU> PostToken<TU>(string address, string token)
         {
-            AddAuthenticationHeader();
-            CoorporateApiResult<TU> result = new CoorporateApiResult<TU>();
+            // Serialize the data we are sending in to JSON
+            //string serialisedData = JsonConvert.SerializeObject(model);
 
+            AddAuthenticationHeader();
+
+            CoorporateApiResult<TU> result = new CoorporateApiResult<TU>();
             try
             {
+                // Make the request
                 var response = _client.UploadString(address, token);
                 result.Data = JsonConvert.DeserializeObject<TU>(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
 
+            // Deserialize the response into a GUID
             return result;
         }
 
-        private CoorporateApiResult<TU> PutData<T, TU>(string address, T model)
+        private CoorporateApiResult<bool> PutData<T>(string address, T model)
         {
+            // Serialize the data we are sending in to JSON
             string serialisedData = JsonConvert.SerializeObject(model);
-            AddAuthenticationHeader();
-            CoorporateApiResult<TU> result = new CoorporateApiResult<TU>();
 
+            AddAuthenticationHeader();
+
+
+            CoorporateApiResult<bool> result = new CoorporateApiResult<bool>();
             try
             {
+                // Make the request
                 var response = _client.UploadString(address, "PUT", serialisedData);
-                result.Data = JsonConvert.DeserializeObject<TU>(response);
+                if (response != null)
+                    result.Data = true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
 
+            // Deserialize the response into a GUID
             return result;
         }
 
@@ -171,17 +215,16 @@ namespace Unidad3P1.WebApiClients
         {
             AddAuthenticationHeader();
             CoorporateApiResult<bool> result = new CoorporateApiResult<bool>();
-
             try
             {
+                // Make the request
                 var response = _client.UploadString(address, "DELETE", string.Empty);
                 result.Data = true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
-
             return result;
         }
 
@@ -190,11 +233,13 @@ namespace Unidad3P1.WebApiClients
             return string.Format("{0}/{1}", ApiBaseAddress, controller);
         }
 
+
         private void AddAuthenticationHeader(WebRequest webRequest = null, System.Net.Http.HttpClient httpClient = null)
         {
             ResetWebClient();
-            var byteArray = Encoding.ASCII.GetBytes(_apiCredenciales);
+            var byteArray = Encoding.ASCII.GetBytes(_apiCredenciales); // Encoding the username and password as ASCII.
             _client.Headers.Add(HttpRequestHeader.Authorization, "Basic " + Convert.ToBase64String(byteArray));
+
         }
 
         private void Dispose(bool disposing)
@@ -203,8 +248,11 @@ namespace Unidad3P1.WebApiClients
             {
                 if (disposing)
                 {
+                    // Dispose managed resources.
                     _client.Dispose();
                 }
+
+                // Dispose unmanaged managed resources.
 
                 disposed = true;
             }
@@ -215,5 +263,8 @@ namespace Unidad3P1.WebApiClients
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+
+        #endregion
     }
 }

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Unidad3P1.Data;
 using Unidad3P1.Data.Entidades;
+using webApi.Dtos;
 
 namespace ApiWeb.Controllers
 {
@@ -15,31 +17,39 @@ namespace ApiWeb.Controllers
     public class ProductoController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
 
-        public ProductoController(ApplicationDbContext context)
+        public ProductoController(ApplicationDbContext context,
+            IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Producto
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductoEntity>>> GetProducto()
+        public async Task<ActionResult<IEnumerable<ProductoDtos>>> GetProducto()
         {
-            return await _context.Producto.ToListAsync();
+            var entidades = await _context.Producto.ToListAsync();
+            var modelList = _mapper.Map<List<ProductoDtos>>(entidades);
+
+            return Ok(modelList);
         }
 
         // GET: api/Producto/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductoEntity>> GetProductoEntity(int id)
+        public async Task<ActionResult<ProductoDtos>> GetProductoEntity(int id)
         {
-            var productoEntity = await _context.Producto.FindAsync(id);
+            var categoriaEntity = await _context.Producto.FindAsync(id);
 
-            if (productoEntity == null)
+            if (categoriaEntity == null)
             {
                 return NotFound();
             }
 
-            return productoEntity;
+            // Mapear la entidad a DTO
+            var categoriaDto = _mapper.Map<ProductoDtos>(categoriaEntity);
+            return Ok(categoriaDto);
         }
 
         // PUT: api/Producto/5
@@ -99,6 +109,9 @@ namespace ApiWeb.Controllers
 
             return NoContent();
         }
+
+
+
 
         private bool ProductoEntityExists(int id)
         {

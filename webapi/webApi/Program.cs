@@ -15,6 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(typeof(CategoryProfileApi));
+builder.Services.AddAutoMapper(typeof(ProductoProfileApi));
 
 var app = builder.Build();
 
