@@ -15,7 +15,7 @@ using webApi.Dtos;
 
 namespace Unidad3P1.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class CategoriasController : Controller
     {
         private readonly ApplicationDbContext _context;

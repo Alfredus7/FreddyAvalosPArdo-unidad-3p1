@@ -46,8 +46,8 @@ namespace ApiWeb.Controllers
             {
                 return NotFound();
             }
-            var ProductoDto = _mapper.Map<ProductoDtos>(ProductoEntity);
-            return Ok(ProductoDto);
+            var ProductoDtos = _mapper.Map<ProductoDtos>(ProductoEntity);
+            return Ok(ProductoDtos);
         }
 
         // PUT: api/Producto/5
