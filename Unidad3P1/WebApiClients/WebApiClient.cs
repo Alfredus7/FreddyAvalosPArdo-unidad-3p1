@@ -1,19 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Diagnostics;
-using System.Diagnostics.Eventing.Reader;
-using System.Globalization;
-using System.Linq;
+﻿using Newtonsoft.Json;
 using System.Net;
-using System.Security;
-using System.Security.Cryptography;
-using System.Security.Principal;
 using System.Text;
-using Newtonsoft.Json;
-using System.IO;
-using System.Web;
-using System.Collections.Specialized;
 
 namespace Unidad3P1.WebApiClients
 {
@@ -80,7 +67,7 @@ namespace Unidad3P1.WebApiClients
             return DeleteEntity<bool>(address);
         }
 
-        public CoorporateApiResult<CategoryViewModel> CrearCategoria<CategoryViewModel>(CategoryViewModel modelCategoria)
+        public CoorporateApiResult<CategoryViewModel> PostCategoria<CategoryViewModel>(CategoryViewModel modelCategoria)
         {
             string recurso = $"api/Categoria";
 
@@ -89,7 +76,7 @@ namespace Unidad3P1.WebApiClients
             return PostData<CategoryViewModel, CategoryViewModel>(recurso, modelCategoria);
         }
 
-        public CoorporateApiResult<bool> UpdateCategoria<CategoryViewModel>(CategoryViewModel modelCategoria)
+        public CoorporateApiResult<bool> PutCategoria<CategoryViewModel>(CategoryViewModel modelCategoria)
         {
             string recurso = $"api/Categoria";
 
@@ -129,14 +116,14 @@ namespace Unidad3P1.WebApiClients
             return DeleteEntity<bool>(address);
         }
 
-        public CoorporateApiResult<ProductViewModel> CrearProducto<ProductViewModel>(ProductViewModel modelProducto)
+        public CoorporateApiResult<ProductViewModel> PostProducto<ProductViewModel>(ProductViewModel modelProducto)
         {
             string recurso = $"api/Producto";
 
             return PostData<ProductViewModel, ProductViewModel>(recurso, modelProducto);
         }
 
-        public CoorporateApiResult<bool> UpdateProducto<ProductViewModel>(ProductViewModel modelProducto)
+        public CoorporateApiResult<bool> PutProducto<ProductViewModel>(ProductViewModel modelProducto)
         {
             string recurso = $"api/Producto";
 
