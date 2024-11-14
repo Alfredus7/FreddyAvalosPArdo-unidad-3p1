@@ -99,6 +99,52 @@ namespace Unidad3P1.WebApiClients
 
         #endregion
 
+        #region Productos
+
+        /// <summary>
+        /// GetProductos
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public CoorporateApiResult<T> GetProductos<T>()
+        {
+            string address = "api/Producto";
+
+            return GetData<T>(address);
+        }
+
+        public CoorporateApiResult<T> GetProductoById<T>(int id)
+        {
+            string address = $"api/Producto/{id}";
+
+            return GetData<T>(address);
+        }
+
+        public CoorporateApiResult<bool> DeleteProductoById<T>(int id)
+        {
+            string recurso = $"api/Producto/{id}";
+
+            string address = GenerateApiAddress(recurso);
+
+            return DeleteEntity<bool>(address);
+        }
+
+        public CoorporateApiResult<ProductViewModel> CrearProducto<ProductViewModel>(ProductViewModel modelProducto)
+        {
+            string recurso = $"api/Producto";
+
+            return PostData<ProductViewModel, ProductViewModel>(recurso, modelProducto);
+        }
+
+        public CoorporateApiResult<bool> UpdateProducto<ProductViewModel>(ProductViewModel modelProducto)
+        {
+            string recurso = $"api/Producto";
+
+            return PutData<ProductViewModel>(modelProducto, recurso);
+        }
+
+        #endregion
+
 
         #endregion
 
