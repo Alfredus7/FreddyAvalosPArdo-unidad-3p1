@@ -74,10 +74,8 @@ namespace Unidad3P1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var categoriaEntity = _mapper.Map<CategoryViewModel, CategoriaEntity>(categoria);
-
-                _context.Add(categoriaEntity);
-                await _context.SaveChangesAsync();
+                WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
+                var Views = webApiClient.PostCategoria<CategoryViewModel>(categoria);
                 return RedirectToAction(nameof(Index));
             }
             return View(categoria);
@@ -110,35 +108,8 @@ namespace Unidad3P1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("CategoriaId,CategoriaNombre,Descripcion")] CategoryViewModel categoriaModel)
         {
-            if (id != categoriaModel.CategoriaId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    var categoriaEntity = await _context.Categoria.FindAsync(id);
-
-                    _mapper.Map<CategoryViewModel, CategoriaEntity>(categoriaModel, categoriaEntity);
-
-                    _context.Update(categoriaEntity);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CategoriaExists(categoriaModel.CategoriaId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
+            WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
+            var Views = webApiClient.PutCategoria<CategoryViewModel,ProductoEntity>(id,categoriaModel);
             return View(categoriaModel);
         }
 

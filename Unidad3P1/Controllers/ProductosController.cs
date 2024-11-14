@@ -82,10 +82,8 @@ namespace Unidad3P1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var productoEntity = _mapper.Map<ProductoViewModel, ProductoEntity>(producto);
-
-                _context.Add(productoEntity);
-                await _context.SaveChangesAsync();
+                WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
+                var Views = webApiClient.PostProducto<ProductoViewModel>(producto);
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CategoriaId"] = new SelectList(_context.Categoria, "CategoriaId", "CategoriaNombre", producto.CategoriaId);
@@ -134,36 +132,42 @@ namespace Unidad3P1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ProductoId,Nombre,DescripcionCorta,DescripcionLarga,Precio,ImagenUrl,InStock,CategoriaId")] ProductoViewModel producto)
         {
-            if (id != producto.ProductoId)
+            //if (id != producto.ProductoId)
+            //{
+            //    return NotFound();
+            //}
+
+            //if (ModelState.IsValid)
+            //{
+            //    try
+            //    {
+            //        var ProductoEntity = await _context.Producto.FindAsync(id);
+
+            //        _mapper.Map<ProductoViewModel, ProductoEntity>(producto, ProductoEntity);
+
+            //        _context.Update(ProductoEntity);
+            //        await _context.SaveChangesAsync();
+            //    }
+            //    catch (DbUpdateConcurrencyException)
+            //    {
+            //        if (!ProductoExists(producto.ProductoId))
+            //        {
+            //            return NotFound();
+            //        }
+            //        else
+            //        {
+            //            throw;
+            //        }
+            //    }
+            //    return RedirectToAction(nameof(Index));
+            //}
+             if (ModelState.IsValid)
             {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    var ProductoEntity = await _context.Producto.FindAsync(id);
-
-                    _mapper.Map<ProductoViewModel, ProductoEntity>(producto, ProductoEntity);
-
-                    _context.Update(ProductoEntity);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProductoExists(producto.ProductoId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
+                webApiClient.PutProducto<ProductoViewModel, ProductoEntity>(id, producto);
+                ViewData["CategoriaId"] = new SelectList(_context.Categoria, "CategoriaId", "CategoriaNombre", producto.CategoriaId);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoriaId"] = new SelectList(_context.Categoria, "CategoriaId", "CategoriaNombre", producto.CategoriaId);
             return View(producto);
         }
 

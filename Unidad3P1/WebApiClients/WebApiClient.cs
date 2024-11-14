@@ -70,20 +70,16 @@ namespace Unidad3P1.WebApiClients
         public CoorporateApiResult<CategoryViewModel> PostCategoria<CategoryViewModel>(CategoryViewModel modelCategoria)
         {
             string recurso = $"api/Categoria";
-
-            //string address = GenerateApiAddress(recurso);
-
-            return PostData<CategoryViewModel, CategoryViewModel>(recurso, modelCategoria);
+            string source = GenerateApiAddress(recurso);
+            return PostData<CategoryViewModel, CategoryViewModel>(source, modelCategoria);
         }
 
-        public CoorporateApiResult<bool> PutCategoria<CategoryViewModel>(CategoryViewModel modelCategoria)
+        public CoorporateApiResult<TU> PutCategoria<T, TU>(int id, T model)
         {
-            string recurso = $"api/Categoria";
-
-            return PutData<CategoryViewModel>(modelCategoria, recurso);
+            string recurso = $"api/Categoria/{id}";
+            string address = GenerateApiAddress(recurso);
+            return PutData<T, TU>(model, address);
         }
-
-
         #endregion
 
         #region Productos
@@ -119,16 +115,20 @@ namespace Unidad3P1.WebApiClients
         public CoorporateApiResult<ProductViewModel> PostProducto<ProductViewModel>(ProductViewModel modelProducto)
         {
             string recurso = $"api/Producto";
-
-            return PostData<ProductViewModel, ProductViewModel>(recurso, modelProducto);
+            string address = GenerateApiAddress(recurso);
+            return PostData<ProductViewModel, ProductViewModel>(address, modelProducto);
         }
 
-        public CoorporateApiResult<bool> PutProducto<ProductViewModel>(ProductViewModel modelProducto)
+        public CoorporateApiResult<TU> PutProducto<T, TU>(int id, T model)
+
         {
-            string recurso = $"api/Producto";
 
-            return PutData<ProductViewModel>(modelProducto, recurso);
+            string address = $"api/Producto/{id}";
+
+            return PutData<T, TU>(model, address);
+
         }
+
 
         #endregion
 
@@ -165,12 +165,12 @@ namespace Unidad3P1.WebApiClients
             return PostData<T, TU>(address, model);
         }
 
-        private CoorporateApiResult<bool> PutData<T>(T model, string module)
+        private CoorporateApiResult<TU> PutData<T, TU>(T model, string module)
         {
             string address = GenerateApiAddress(module);
 
             // Deserialize the response into a GUID
-            return PutData<T>(address, model);
+            return PutData<T, TU>(address, model);
         }
 
         private CoorporateApiResult<TU> PostData<T, TU>(string address, T model)
@@ -219,7 +219,7 @@ namespace Unidad3P1.WebApiClients
             return result;
         }
 
-        private CoorporateApiResult<bool> PutData<T>(string address, T model)
+        private CoorporateApiResult<TU> PutData<T, TU>(string address, T model)
         {
             // Serialize the data we are sending in to JSON
             string serialisedData = JsonConvert.SerializeObject(model);
@@ -227,13 +227,12 @@ namespace Unidad3P1.WebApiClients
             AddAuthenticationHeader();
 
 
-            CoorporateApiResult<bool> result = new CoorporateApiResult<bool>();
+            CoorporateApiResult<TU> result = new CoorporateApiResult<TU>();
             try
             {
                 // Make the request
                 var response = _client.UploadString(address, "PUT", serialisedData);
-                if (response != null)
-                    result.Data = true;
+                result.Data = JsonConvert.DeserializeObject<TU>(response);
             }
             catch (Exception ex)
             {
