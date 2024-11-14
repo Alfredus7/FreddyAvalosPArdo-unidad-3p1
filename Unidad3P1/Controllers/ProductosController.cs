@@ -31,9 +31,9 @@ namespace Unidad3P1.Controllers
         {
             //var applicationDbContext = _context.Producto.Include(p => p.Categoria);
 
-            var entidades = _context.Producto.Include(p => p.Categoria).ToList();
-            var viewModelProduct = _mapper.Map<List<ProductoViewModel>>(entidades);
-            return View(viewModelProduct);
+            WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
+            var modelList = webApiClient.GetProductos<List<ProductoViewModel>>();
+            return View(modelList.Data);
         }
 
         // GET: Productos/Details/5
@@ -44,29 +44,26 @@ namespace Unidad3P1.Controllers
                 return NotFound();
             }
 
-            var producto = await _context.Producto
-                .Include(p => p.Categoria)
-                .FirstOrDefaultAsync(m => m.ProductoId == id);
-            if (producto == null)
+            WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
+            var producto = webApiClient.GetProductoById<ProductoViewModel>(id.Value);
+
+            if (producto.Data == null)
             {
                 return NotFound();
             }
 
-            var viewModel = _mapper.Map<ProductoViewModel>(producto);
-
-            return View(viewModel);
+            return View(producto.Data);
         }
-        [Authorize]
-        public async Task<IActionResult> ProductosDetalles(int? id)
-        {
 
-            var producto = await _context.Producto
-                .Include(p => p.Categoria)
-                .FirstOrDefaultAsync(m => m.ProductoId == id);
-            var viewModel = _mapper.Map<ProductoViewModel>(producto);
 
-            return View(viewModel);
-        }
+
+
+
+
+
+
+
+
 
         
         // GET: Productos/Create
@@ -95,6 +92,22 @@ namespace Unidad3P1.Controllers
             return View(producto);
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // GET: Productos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -103,16 +116,15 @@ namespace Unidad3P1.Controllers
                 return NotFound();
             }
 
-            var producto = await _context.Producto.FindAsync(id);
-            if (producto == null)
+            WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
+            var producto = webApiClient.GetProductoById<ProductoViewModel>(id.Value);
+            if (producto.Data == null)
             {
                 return NotFound();
             }
-            ViewData["CategoriaId"] = new SelectList(_context.Categoria, "CategoriaId", "CategoriaNombre", producto.CategoriaId);
+            ViewData["CategoriaId"] = new SelectList(_context.Categoria, "CategoriaId", "CategoriaNombre", producto.Data.CategoriaId);
             
-            var viewModel = _mapper.Map<ProductoViewModel>(producto);
-            
-            return View(viewModel);
+            return View(producto.Data);
         }
 
         // POST: Productos/Edit/5
@@ -155,6 +167,14 @@ namespace Unidad3P1.Controllers
             return View(producto);
         }
 
+
+
+
+
+
+
+
+
         // GET: Productos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -162,17 +182,19 @@ namespace Unidad3P1.Controllers
             {
                 return NotFound();
             }
-
-            var producto = await _context.Producto
-                .Include(p => p.Categoria)
-                .FirstOrDefaultAsync(m => m.ProductoId == id);
+        
+            WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
+            var producto = webApiClient.GetProductoById<ProductoViewModel>(id.Value);
             if (producto == null)
             {
                 return NotFound();
             }
-            var viewModel = _mapper.Map<ProductoViewModel>(producto);
+            if (producto.Data == null)
+            {
+                return NotFound();
+            }
 
-            return View(viewModel);
+            return View(producto.Data);
         }
 
         // POST: Productos/Delete/5
@@ -183,16 +205,38 @@ namespace Unidad3P1.Controllers
             var producto = await _context.Producto.FindAsync(id);
             if (producto != null)
             {
-                _context.Producto.Remove(producto);
+                WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
+                var result = webApiClient.DeleteProductoById<ProductoViewModel>(id);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
+
+
+
+
+
+
+
+
         private bool ProductoExists(int id)
         {
-            return _context.Producto.Any(e => e.ProductoId == id);
+            WebApiClients.WebApiClient webApiClient = new WebApiClients.WebApiClient();
+            var producto = webApiClient.GetProductoById<ProductoViewModel>(id);
+            return producto.Data != null;
+        }
+        [Authorize]
+        public async Task<IActionResult> ProductosDetalles(int? id)
+        {
+
+            var producto = await _context.Producto
+                .Include(p => p.Categoria)
+                .FirstOrDefaultAsync(m => m.ProductoId == id);
+            var viewModel = _mapper.Map<ProductoViewModel>(producto);
+
+            return View(viewModel);
         }
     }
 }
